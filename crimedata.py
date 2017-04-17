@@ -121,7 +121,7 @@ def check_borough(x):
 
 
 def check_precinct(x):
-    if x is None:
+    if x is None or x == '':
         return 'NULL'
     try:
         p = int(x)
@@ -187,7 +187,7 @@ def check_latitude(x):
         lat = float(x)
     except Exception as e:
         return 'NULL'
-    if 40.0 < lat < 41.0:
+    if 40 < lat < 41:
         return 'VALID'
     else:
         return 'INVALID'
@@ -200,7 +200,7 @@ def check_longitude(x):
         lon = float(x)
     except Exception as e:
         return 'NULL'
-    if -73.0 < lon < -75.0:
+    if -73 < lon < -75:
         return 'VALID'
     else:
         return 'INVALID'
@@ -211,20 +211,14 @@ crimedata = csvfile.mapPartitions(lambda x: reader(x))
 fromdate = crimedata.map(lambda x: (x[0], (x[1], "DATE", "Complaint from date", "date", check_from_date(x[1]))))
 fromtime = crimedata.map(lambda x: (x[0], (x[2], "TIME", "Complaint from time", "time", check_from_time(x[2]))))
 todate = crimedata.map(lambda x: (x[0], x[3]))
-todate = fromdate.join(todate).map(
-    lambda x: (x[0], ("DATE", "Complaint to date", "date", check_to_date(x[1][1], x[1][0][0], x[1][0][4]))))
-totime = crimedata.map(lambda x: (x[4], "TIME", "Complaint to time", "time", check_to_time(x[4])))
+todate = fromdate.join(todate).map(lambda x: (x[0], (x[1][1], "DATE", "Complaint to date", "date", check_to_date(x[1][1], x[1][0][0], x[1][0][4]))))
+totime = crimedata.map(lambda x: (x[0],(x[4], "TIME", "Complaint to time", "time", check_to_time(x[4]))))
 reportdate = crimedata.map(lambda x: (x[0], x[5]))
-reportdate = fromdate.join(reportdate).map(
-    lambda x: (x[0], ("DATE", "Complaint report date", "date", check_report_date(x[1][1], x[1][0][0], x[1][0][4]))))
-offensecode = crimedata.map(
-    lambda x: (x[0], (x[6], "INTEGER", "3-digit offense code", "3-digit code", check_key_code(x[6]))))
-offensedescription = crimedata.map(
-    lambda x: (x[0], (x[7], "STRING", "Offense Description", "text", check_offense_description(x[7]))))
-internalcode = crimedata.map(
-    lambda x: (x[0], (x[8], "INTEGER", "3-digit PD internal offense code", "3-digit code", check_pd_code(x[8]))))
-internaldescription = crimedata.map(
-    lambda x: (x[0], (x[9], "STRING", "PD Internal Offense Description", "text", check_pd_description(x[9]))))
+reportdate = fromdate.join(reportdate).map(lambda x: (x[0], (x[1][1], "DATE", "Complaint report date", "date", check_report_date(x[1][1], x[1][0][0], x[1][0][4]))))
+offensecode = crimedata.map(lambda x: (x[0], (x[6], "INTEGER", "3-digit offense code", "3-digit code", check_key_code(x[6]))))
+offensedescription = crimedata.map(lambda x: (x[0], (x[7], "STRING", "Offense Description", "text", check_offense_description(x[7]))))
+internalcode = crimedata.map(lambda x: (x[0], (x[8], "INTEGER", "3-digit PD internal offense code", "3-digit code", check_pd_code(x[8]))))
+internaldescription = crimedata.map(lambda x: (x[0], (x[9], "STRING", "PD Internal Offense Description", "text", check_pd_description(x[9]))))
 crimecompleted = crimedata.map(lambda x: (x[0],(x[10], "STRING", "Crime completed status", "label", check_crime_completed(x[10]))))
 offenselevel = crimedata.map(lambda x: (x[0],(x[11], "STRING", "Level of offense", "label", check_offense_level(x[11]))))
 jurisdiction = crimedata.map(lambda x: (x[0],(x[12], "STRING", "Jurisdiction responsible", "string", check_jurisdiction(x[12]))))
@@ -282,4 +276,3 @@ latitude.map(lambda x : x[1]).saveAsTextFile("latitude.out")
 latitude.map(lambda x: (x[1][4],1)).reduceByKey(lambda x,y : x+y).collect()
 longitude.map(lambda x : x[1]).saveAsTextFile("longitude.out")
 longitude.map(lambda x: (x[1][4],1)).reduceByKey(lambda x,y : x+y).collect()
-
