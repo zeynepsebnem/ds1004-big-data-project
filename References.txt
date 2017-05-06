@@ -1,0 +1,5 @@
+Data Sources
+
+NYC Open Data - https://opendata.cityofnewyork.us
+Weather Underground - https://www.wunderground.com
+National Centers for Environmental Information - https://www.ncdc.noaa.gov
