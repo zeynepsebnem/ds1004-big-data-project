@@ -22,7 +22,7 @@ from itertools import islice
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: <filename of restaurant dataset>", file=sys.stderr)
+        print("Usage: count_restaurants_by_boro.py <filename of restaurant dataset>", file=sys.stderr)
         exit(-1)
     sc = SparkContext()
 
@@ -32,15 +32,15 @@ if __name__ == "__main__":
     restaurants = lines.mapPartitionsWithIndex(lambda i, iter: islice(iter, 1, None) if i==0 else iter) \
         .mapPartitions(lambda x: reader(x))
 
-    # Map to (CAMIS, (BORO, INSPECTION TYPE)) key-value pairs
+    # Map to (CAMIS, BORO) key-value pairs
     # Reduce by key to get rid of any duplicate CAMIS ids
-    restaurants = restaurants.map(lambda line: (line[0], (line[2], line[17]))) \
+    restaurants = restaurants.map(lambda line: (line[0], line[2])) \
         .reduceByKey(lambda a, b: a)
 
     # Map to (BORO, 1) key-value pairs
     # Reduce by key to get counts by borough
     # Alphabetize by borough
-    restaurants = restaurants.map(lambda x: (x[1][0], 1)) \
+    restaurants = restaurants.map(lambda x: (x[1], 1)) \
         .reduceByKey(add) \
         .sortByKey()
 
