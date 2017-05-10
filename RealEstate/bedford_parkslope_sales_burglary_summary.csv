@@ -1,0 +1,20 @@
+hood,year,avg price,count burglary/robbery/grand larceny and of mv,,bedstuy correlation,park slope correlation
+bedford stuyvesant,2006,605,831.34,2053,,-0.334634562,-0.616028112
+bedford stuyvesant,2008,536,218.40,1957
+bedford stuyvesant,2009,414,480.32,1781
+bedford stuyvesant,2010,373,402.03,1915
+bedford stuyvesant,2011,419,655.64,1978
+bedford stuyvesant,2012,481,524.01,2086
+bedford stuyvesant,2013,626,258.19,1812
+bedford stuyvesant,2014,804,190.59,1898
+bedford stuyvesant,2015, 978,138.33 ,1750
+park slope,2006, 1,578,509.14 ,1018
+park slope,2007, 1,588,772.97 ,944
+park slope,2008, 1,590,645.56 ,910
+park slope,2009, 1,411,799.96 ,875
+park slope,2010, 1,533,640.79 ,855
+park slope,2011, 1,446,689.03 ,801
+park slope,2012, 1,909,316.35 ,817
+park slope,2013, 2,044,284.97 ,777
+park slope,2014, 2,575,820.84 ,743
+park slope,2015, 3,343,544.29 ,765

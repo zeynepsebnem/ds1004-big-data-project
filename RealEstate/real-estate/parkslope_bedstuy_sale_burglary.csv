@@ -1,0 +1,21 @@
+hood,year,avg price,count_felony
+bedford stuyvesant,2006,605831.34,2053
+bedford stuyvesant,2007,599073.63,2133
+bedford stuyvesant,2008,536218.40,1957
+bedford stuyvesant,2009,414480.32,1781
+bedford stuyvesant,2010,373402.03,1915
+bedford stuyvesant,2011,419655.64,1978
+bedford stuyvesant,2012,481524.01,2086
+bedford stuyvesant,2013,626258.19,1812
+bedford stuyvesant,2014,804190.59,1898
+bedford stuyvesant,2015, 978138.33 ,1750
+park slope,2006, 1578509.14 ,1018
+park slope,2007, 1588772.97 ,944
+park slope,2008, 1590645.56 ,910
+park slope,2009, 1411799.96 ,875
+park slope,2010, 1533640.79 ,855
+park slope,2011, 1446689.03 ,801
+park slope,2012, 1909316.35 ,817
+park slope,2013, 2044284.97 ,777
+park slope,2014, 2575820.84 ,743
+park slope,2015, 3343544.29 ,765
