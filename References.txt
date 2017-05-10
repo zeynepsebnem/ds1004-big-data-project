@@ -1,5 +1,17 @@
 Data Sources
 
-NYC Open Data - https://opendata.cityofnewyork.us
-Weather Underground - https://www.wunderground.com
-National Centers for Environmental Information - https://www.ncdc.noaa.gov
+Crime data:
+“NYPD Complaint Data Historic” from https://data.cityofnewyork.us/Public-Safety/NYPD-Complaint-Data-Historic/qgea-i56i
+
+Real-estate:
+“City of New York ACRIS Real Property” from https://data.cityofnewyork.us/City-Government/ACRIS-Real-Property-Master/bnx9-e6tj/data
+
+Restaurant data:
+“DOHMH New York City Restaurant Inspection Results” from https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/data
+
+Neighborhood shapefiles:
+“Neighborhood Tabulation Areas” from https://www1.nyc.gov/site/planning/data-maps/open-data/bytes-archive.page
+
+Weather data:
+Weather Underground, https://www.wunderground.com
+National Centers for Environmental Information, https://www.ncdc.noaa.gov

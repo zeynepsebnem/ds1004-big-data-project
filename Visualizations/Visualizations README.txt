@@ -1,0 +1,1 @@
+This directory contains a Jupyter notebook that generates the visualizations used in Part 1 of our project, along with .png files for several different visualizations.
